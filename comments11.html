@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="UniFyd.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="media.css">
+    <script src="main.js" defer></script>
+</head>
+
+<style>
+    body{
+        background-color: var(--body-color);
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .comments{
+        width: 60rem;
+        background-color: var(--white);
+        padding: 0 1rem;
+        border-radius: 10px;
+        margin-bottom: 5rem;
+    }
+
+    .comments img{
+        width: 100%;
+        margin-top: 0.5rem;
+        border-radius: 10px;
+        height: 30rem;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+
+    .firstline{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--text-color);
+    }
+
+    .bla{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .firstline img{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%; 
+        object-fit: cover;
+        box-shadow: 1px 1px 0 var(--border-color);
+    }
+
+    .firstline p{
+        font-size: calc(var(--font-size)*0.8);
+        color: var(--text-color);
+    }
+
+    .comment{
+        display: grid;
+        grid-template-columns: 10% 90%;
+        min-height: 2rem;
+        background-color: var(--body-color);
+        color: var(--text-color);
+        border-radius: 10px;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+    }
+
+    .comment> p{
+        text-align: left;
+        color: var(--text-color);
+        font-size: 0.8rem;
+        cursor: default;
+    }
+
+    .comment button{
+        border-radius: 0.5rem;
+        border: none;
+        background-color: transparent;
+        font-size: 1rem;
+    }
+
+    #count-1, #count-2, #count-3{
+        color: var(--text-color);
+    }
+
+    .input{
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    input{
+        width: 80%;
+        height: 3rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        border: 3px solid var(--border-color);
+        outline: none;
+        transition: all 200ms;
+    }
+    
+    input:focus{
+        box-shadow: 2px 3px 0 var(--border-color);
+    }
+
+    #showDivBtn{
+        text-align: center;
+        width: 10%;
+        height: 3.3rem;
+        border: none;
+        background-color: var(--border-color);
+        color: #fff;
+        border-radius: 0.5rem;
+        font-size: calc(var(--font-size));
+        font-weight: bold;
+        cursor: pointer;
+        outline: none;
+        transition: all 200ms;
+    }
+
+    #showDivBtn:hover{
+        scale: 1.1;
+    }
+
+    #showDivBtn:active{
+        box-shadow: none;
+        scale: 0.9;
+    }
+</style>
+
+<body>
+    <div class="comments" id="comments">
+        <div class="firstline">
+            <div class="bla">
+                <img src="https://i.redd.it/snoovatar/avatars/16ce8a2d-1548-44bc-91ad-bb2c955b23c4.png" alt="">
+                <h5>alex040512</h5>
+            </div>
+            <p>. 10 days ago . Popular on UniFyd</p>
+        </div>
+        <h3>Escape From Tarkov Is About To Get Its First Microtransactions</h3>
+        <img src="https://external-preview.redd.it/escape-from-tarkov-is-about-to-get-its-first-v0-25zNdMV8IU1-tkyOn0aQdH6nkLieFSOI5viHuLhW78Y.jpg?width=1080&crop=smart&auto=webp&s=1cb956b843990370c58635eb3fb60431d602c4e1" alt="">
+        <div class="input">
+            <input type="text" id="inputTextarea" placeholder="Add Comment...">
+            <button id="showDivBtn">Post</button>
+        </div>
+        <div id="outputDiv" style="display: none; margin-left: 3rem;"></div>
+        
+        <div class="comment">
+            <div class="but">
+                <button>
+                    <i class="fa-regular fa-heart " onclick="toggleLike(this, 1)" style="color: red;"></i>
+                </button>
+                    <p id="count-1">134</p>
+            </div>
+            <p>exercitationem, doloremque, esse, blanditiis suscipit laborum saepe dolorum. Enim doloremque porro in ipsum non assumenda, dolore fugit. </p>
+        </div>
+        <div class="comment">
+            <div class="but">
+                <button>
+                    <i class="fa-regular fa-heart " onclick="toggleLike(this, 2)" style="color: red;"></i>
+                </button>
+                    <p id="count-2">67</p>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit sint aspernatur voluptatum quis mollitia consectetur, quo vel quod dolores necessitatibus? </p>
+        </div>
+        <div class="comment">
+            <div class="but">
+                <button>
+                    <i class="fa-regular fa-heart " onclick="toggleLike(this, 3)" style="color: red;"></i>
+                </button>
+                    <p id="count-3">236</p>
+            </div>
+            <p>ipsum non assumenda, dolore fugit? At totam, officiis inventore nemo nobis molestias maxime, odio possimus </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+let like = document.querySelector('.like');
+
+document.getElementById('showDivBtn').addEventListener('click', ()=> {
+    const inputTextarea = document.getElementById('inputTextarea');
+    const outputDiv = document.getElementById('outputDiv');
+    outputDiv.innerHTML = `
+    <div class="comment">
+        <div class="but">
+            <button>
+                <i class="fa-regular fa-heart" onclick="toggleLike(this, 4)" style="color: red;"></i>
+            </button>
+            <p id="count-4">0</p>
+        </div>
+        <p>${inputTextarea.value}</p>
+    </div>`;
+}); 
+
+outputDiv.style.display = 'block';
+
+
+</script>
